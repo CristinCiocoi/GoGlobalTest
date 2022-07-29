@@ -1,0 +1,24 @@
+<div class="d-grid justify-content-center" style="margin-top: 20px">
+  <form class="d-block m-auto" [formGroup]="loginForm">
+    <label mdbLabel class="form-label" for="form1">Search</label>
+    <input
+      mdbInput
+      formControlName="inputSearch"
+      type="search"
+      id="form1"
+      class="form-control"
+    />
+    <button class="btn btn-primary" (click)="onSearch()">Search</button>
+  </form>
+
+  <div *ngIf="data?.items" class="container">
+    <div *ngFor="let element of data.items">
+      <h1>{{ element.name }}</h1>
+      <p>{{ element.description }}</p>
+      <img [src]="element.owner.avatar_url" width="150" height="auto" />
+      <button class="btn btn-primary" (click)="AddBookMark(element)">
+        Add bookmark
+      </button>
+    </div>
+  </div>
+</div>

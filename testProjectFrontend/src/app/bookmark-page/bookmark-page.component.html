@@ -1,0 +1,28 @@
+<h3>BookMarks:</h3>
+<button class="btn btn-primary" (click)="ExportData()">Export Data</button>
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">
+  Bookmark
+</button>
+
+<div class="d-grid justify-content-center">
+  <div *ngFor="let element of data">
+    <h1>{{ element.name }}</h1>
+    <p>{{ element.description }}</p>
+    <img [src]="element.avatarUrl" width="150" height="auto" />
+    <button class="btn btn-primary" (click)="UnBookMark(element.id)">
+      Unbookmark
+    </button>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-body">
+    <input
+      placeholder="Email"
+      type="text"
+      class="form-control form-control-lg"
+      #email
+    />
+    <button class="btn btn-primary" (click)="SendMsg(email.value)">Send</button>
+  </div>
+</ng-template>
